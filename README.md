@@ -40,3 +40,37 @@ This module will provide the following outputs.
 | Output Name | Type | Description |
 |:-:|:-:|:-:|
 | ip  | string  | IP address of the KVM guest VM. |
+
+## Troubleshooting
+
+### To check KVM guest VM
+
+```shell
+# virsh list --all
+```
+
+### To check KVM guest IP
+
+```shell
+# virsh net-dhcp-leases default
+```
+
+### Allow access from outside to the KVM guest
+```shell
+# vi /etc/libvirt/hooks/qemu
+```
+
+Add the follwoing line to the end of the file.
+```shell
+addForward <KVM gues VM name>  <KVM host network interface> <KVM host IP address> <Listening port on KVM host>  virbr0 <KVM guest VM IP> <KM guest VM service port> <protocol>
+
+```
+
+### Run the following commands to check iptables rules fo rthe guest VM
+
+```shell
+# iptables-save -t nat
+# iptables-save -t filter | grep FORWARD
+# iptables -t nat -L -n -v
+# iptables -L FORWARD -nv --line-number
+```
