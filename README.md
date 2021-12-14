@@ -1,4 +1,4 @@
-# TechniPal AWS Demo Reference Architecture
+# KVM Guest VM 
 
 ## Prerequisites
 
