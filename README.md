@@ -105,6 +105,13 @@ addForward <KVM gues VM name>  <KVM host network interface> <KVM host IP address
 
 ```
 
+Stop and start the guest VM.
+
+```shell
+virst shutdown <guest-vm-name>
+virst start <guest-vm-name>
+```
+
 ### Run the following commands to check iptables rules fo rthe guest VM
 
 ```shell
